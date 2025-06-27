@@ -12,7 +12,7 @@ interface Post {
 
 const components = {
   types: {
-    image: ({ value }: { value: { asset: { url: string } } }) => {
+    image: ({ value }: { value: { asset: { _ref: string } } }) => {
       const { src, width, height } = buildSrc({
         id: value.asset._ref,
         width: 1000,
@@ -27,18 +27,10 @@ const components = {
   },
 };
 
-export async function getStaticParams() {
-  const slugs = await client.fetch(
-    groq`*[_type == "post" && defined(slug.current)][].slug.current`
-  );
-
-  return slugs.map((slug: string) => ({ slug }));
-}
-
 export default async function PostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
 

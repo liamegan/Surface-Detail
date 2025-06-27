@@ -1,2 +1,12 @@
 @import "./resets.scss";
 @import "./typography.scss";
+
+body {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+.main {
+  max-width: 1000px;
+}

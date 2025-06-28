@@ -56,9 +56,11 @@ export default async function PostPage({
   if (!post) return <div>No post found for {slug}</div>;
 
   return (
-    <main>
+    <>
       <h2>{post.title}</h2>
-      <PortableText value={post.body} components={components} />
-    </main>
+      <main>
+        <PortableText value={post.body} components={components} />
+      </main>
+    </>
   );
 }

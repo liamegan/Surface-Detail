@@ -2,10 +2,10 @@
   display: grid;
   grid-template-columns: calc(300px + 4em) auto;
   gap: 1rem;
+  margin: 0 auto;
   max-width: 1000px;
   position: relative;
   width: 100vw;
-  margin: 0 auto;
   > * {
     margin: 0;
   }
@@ -16,7 +16,7 @@
 }
 main {
   column-count: 10;
-  column-width: min(700px, 100vw);
+  column-width: 500px;
   gap: 2em;
   margin: 0;
   max-height: calc(100vh - var(--baseline) * 4);

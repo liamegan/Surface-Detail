@@ -36,6 +36,19 @@ export default function RootLayout({
                   GitHub
                 </a>
               </li>
+              <li>
+                <a target="_blank" href="https://codepen.io/shubniggurath">
+                  CodePen
+                </a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://bsky.app/profile/liamegan.bsky.social"
+                >
+                  Bluesky
+                </a>
+              </li>
             </ul>
           </nav>
           <p>All work, writing and random musings copyright Liam Egan.</p>

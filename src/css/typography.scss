@@ -6,8 +6,20 @@
 }
 nav ul {
   list-style: none;
-  border-left: 2px solid #ffffff55;
-  padding-left: 1rem;
+  padding: 0;
+  li {
+    padding-left: 1rem;
+    position: relative;
+    &::before {
+      border-left: 2px solid #ffffff55;
+      content: "";
+      display: inline-block;
+      height: calc(100% - 1px);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
 }
 a {
   position: relative;

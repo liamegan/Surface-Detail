@@ -20,8 +20,6 @@ export default async function Home() {
 
   const posts: Post[] = await client.fetch(query);
 
-  console.log(pagestyles);
-
   return (
     <main className={pagestyles.main}>
       <h2 className="heading1">Posts</h2>

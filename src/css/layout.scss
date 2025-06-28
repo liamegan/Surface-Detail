@@ -1,6 +1,6 @@
 .wrapper {
   display: grid;
-  grid-template-columns: 300px auto;
+  grid-template-columns: calc(300px + 4em) auto;
   gap: 1rem;
   max-width: 1000px;
   position: relative;
@@ -11,13 +11,13 @@
   }
 }
 .header {
-  // position: sticky;
-  // top: 0;
-  width: 300px;
+  padding: 0 2em;
+  width: calc(300px + 4em);
 }
 main {
   column-count: 10;
   column-width: min(700px, 100vw);
+  gap: 2em;
   margin: 0;
   max-height: calc(100vh - var(--baseline) * 4);
 }

@@ -1,11 +1,31 @@
+* {
+  box-sizing: border-box;
+  line-height: var(--baseline);
+  margin-top: 0;
+  margin-bottom: var(--baseline);
+}
+ul {
+  padding-left: 1.5rem;
+}
+li {
+  margin-bottom: 0;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 0;
+}
 h1 {
-  font-size: 2rem;
+  font-size: 3rem;
+  line-height: calc(var(--baseline) * 3);
   font-weight: 600;
 
   font-optical-sizing: auto;
 }
 h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  line-height: calc(var(--baseline) * 2);
   font-weight: 600;
 }
 h3 {

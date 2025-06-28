@@ -1,0 +1,12 @@
+:root {
+  --fontsize: 12px;
+  --lineheight: 1.5;
+  --baseline: calc(var(--lineheight) * var(--fontsize));
+}
+
+@function calc-rem($value) {
+  @return $value / var(--fontsize) * 1rem;
+}
+@function calc-px($value) {
+  @return $value * var(--fontsize) + px;
+}

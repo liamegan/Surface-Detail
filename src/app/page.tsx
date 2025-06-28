@@ -1,7 +1,7 @@
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 
-import styles from "./page.module.css";
+import pagestyles from "./page.module.scss";
 
 interface Post {
   _id: string;
@@ -20,15 +20,15 @@ export default async function Home() {
 
   const posts: Post[] = await client.fetch(query);
 
-  console.log(styles);
+  console.log(pagestyles);
 
   return (
-    <main className={styles.main}>
-      <h1>Latest blog posts</h1>
+    <main className={pagestyles.main}>
+      <h1>Latest posts</h1>
       {posts.length > 0 ? (
-        <ul className={styles.postList}>
+        <ul className={pagestyles.postList}>
           {posts.map((post) => (
-            <li key={post._id} className={styles.postItem}>
+            <li key={post._id} className={pagestyles.postItem}>
               <a href={`/posts/${post.slug.current}`}>{post.title}</a>
             </li>
           ))}

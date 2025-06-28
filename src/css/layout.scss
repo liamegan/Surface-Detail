@@ -1,0 +1,12 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 300px auto;
+  max-width: 1000px;
+  position: relative;
+  width: 100vw;
+}
+.header {
+  // position: sticky;
+  // top: 0;
+  width: 300px;
+}

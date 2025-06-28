@@ -4,6 +4,8 @@ import { PortableText, PortableTextBlock } from "next-sanity";
 import { Image } from "next-sanity/image";
 import { buildSrc } from "@sanity-image/url-builder";
 
+import styles from "./post.module.scss";
+
 interface Post {
   _id: string;
   title: string;
@@ -16,12 +18,21 @@ const components = {
       const { src, width, height } = buildSrc({
         id: value.asset._ref,
         width: 1000,
+        // height: 306,
         baseUrl: `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/`,
       });
 
-      console.log(value);
+      const baselinefactor = 12 * 1.5;
+
       return (
-        <Image src={src} alt="Sanity Image" width={width} height={height} />
+        <div
+          className={styles.imageContainer}
+          style={{
+            "--height": `${Math.floor(height / baselinefactor) * baselinefactor}px`,
+          }}
+        >
+          <Image src={src} alt="Sanity Image" width={width} height={height} />
+        </div>
       );
     },
   },

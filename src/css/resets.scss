@@ -1,6 +1,9 @@
+@use "sass:color";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --foretrans: #1717171a;
   --type-title: "Rubik", Arial, Helvetica, sans-serif;
 }
 
@@ -8,6 +11,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --foretrans: #ededed1a;
   }
 }
 
@@ -15,20 +19,30 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  font-size: var(--fontsize);
+  line-height: var(--lineheight);
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
+
+  background:
+    linear-gradient(
+      to bottom,
+      var(--background) 0,
+      var(--background) calc(var(--baseline) - 1px),
+      var(--foretrans) calc(var(--baseline) - 1px),
+      var(--foretrans) var(--baseline)
+    ),
+    var(--background);
+  background-size: 100% var(--baseline);
+  background-position: 0 0;
+
+  padding-top: var(--baseline);
+
   font-family: var(--type-title);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  /* padding: 0;
-  margin: 0; */
 }
 
 a {
@@ -40,21 +54,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
-
-h1 {
-  font-size: 2rem;
-  font-weight: 600;
-}
-h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-h4 {
-  font-size: 1rem;
-  font-weight: 600;
 }

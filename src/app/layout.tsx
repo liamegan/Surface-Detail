@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import "@/css/styles.scss";
-import styles from "./layout.module.scss";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,7 +28,33 @@ export default function RootLayout({
         ></link>
       </head>
       <body>
-        <div className={styles.main}>{children}</div>
+        <div className={"wrapper"}>
+          <div>
+            <header className={"header"}>
+              <h1 className={"logo"}>Surface Detail</h1>
+              <p>
+                Harkening back to the early internet in order to imagine the
+                future
+              </p>
+              <nav className={"nav"}>
+                <ul>
+                  <li>
+                    <Link href="/">Home</Link>
+                  </li>
+                  {/* <li>
+                    <Link href="/posts">Posts</Link>
+                  </li> */}
+                  <li>
+                    <a target="_blank" href="https://github.com/liamegan">
+                      GitHub
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </header>
+          </div>
+          <div className={"main"}>{children}</div>
+        </div>
       </body>
     </html>
   );

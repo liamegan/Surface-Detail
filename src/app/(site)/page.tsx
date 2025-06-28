@@ -30,7 +30,9 @@ export default async function Home() {
           <ul className={pagestyles.postList}>
             {posts.map((post) => (
               <li key={post._id} className={pagestyles.postItem}>
-                <a href={`/posts/${post.slug.current}`}>{post.title}</a>
+                <a href={`/posts/${post.slug.current}`}>
+                  {post.title} - {new Date(post.publishedAt).toDateString()}
+                </a>
               </li>
             ))}
           </ul>

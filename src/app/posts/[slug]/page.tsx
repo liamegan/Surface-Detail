@@ -27,9 +27,11 @@ const components = {
       return (
         <div
           className={styles.imageContainer}
-          style={{
-            "--height": `${Math.floor(height / baselinefactor) * baselinefactor}px`,
-          }}
+          style={
+            {
+              ["--height" as string]: `${Math.floor(height / baselinefactor) * baselinefactor}px`,
+            } as React.CSSProperties
+          }
         >
           <Image src={src} alt="Sanity Image" width={width} height={height} />
         </div>

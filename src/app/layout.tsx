@@ -34,8 +34,8 @@ export default function RootLayout({
               <h1 className={"logo"}>Surface Detail</h1>
               <p>
                 A humble digital home for my thoughts, projects, ideas and
-                experiments. I don't expect anyone will read this, but it's not
-                for you anyway.
+                experiments. I don&apos;t expect anyone will read this, but
+                it&apos;s not for you anyway.
               </p>
 
               <nav className={"nav"}>

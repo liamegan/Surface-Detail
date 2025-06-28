@@ -33,9 +33,11 @@ export default function RootLayout({
             <header className={"header"}>
               <h1 className={"logo"}>Surface Detail</h1>
               <p>
-                Harkening back to the early internet in order to imagine the
-                future
+                A humble digital home for my thoughts, projects, ideas and
+                experiments. I don't expect anyone will read this, but it's not
+                for you anyway.
               </p>
+
               <nav className={"nav"}>
                 <ul>
                   <li>
@@ -51,6 +53,7 @@ export default function RootLayout({
                   </li>
                 </ul>
               </nav>
+              <p>All work, writing and random musings copyright Liam Egan.</p>
             </header>
           </div>
           <div className={"main"}>{children}</div>

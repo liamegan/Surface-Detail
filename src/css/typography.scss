@@ -17,9 +17,9 @@ h4 {
   margin-bottom: 0;
 }
 h1 {
-  font-size: 3rem;
-  line-height: calc(var(--baseline) * 3);
-  font-weight: 600;
+  font-size: 2rem;
+  line-height: calc(var(--baseline) * 2);
+  font-weight: 800;
 
   font-optical-sizing: auto;
 }
@@ -29,10 +29,8 @@ h2 {
   font-weight: 600;
 }
 h3 {
-  font-size: 1.25rem;
   font-weight: 600;
 }
 h4 {
-  font-size: 1rem;
   font-weight: 600;
 }

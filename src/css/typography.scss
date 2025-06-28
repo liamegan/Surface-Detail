@@ -4,6 +4,30 @@
   margin-top: 0;
   margin-bottom: var(--baseline);
 }
+nav ul {
+  list-style: none;
+  border-left: 2px solid #ffffff55;
+  padding-left: 1rem;
+}
+a {
+  position: relative;
+  text-decoration: underline;
+  &::after {
+    content: "";
+    border-top: 2px solid white;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 0;
+    transition: width 0.2s ease-in-out;
+  }
+  &:hover,
+  &:focus {
+    &::after {
+      width: 100%;
+    }
+  }
+}
 ul {
   padding-left: 1.5rem;
 }

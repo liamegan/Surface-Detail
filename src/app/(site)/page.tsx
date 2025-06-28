@@ -24,15 +24,17 @@ export default async function Home() {
 
   return (
     <main className={pagestyles.main}>
-      <h1>Latest posts</h1>
+      <h2>Latest posts</h2>
       {posts.length > 0 ? (
-        <ul className={pagestyles.postList}>
-          {posts.map((post) => (
-            <li key={post._id} className={pagestyles.postItem}>
-              <a href={`/posts/${post.slug.current}`}>{post.title}</a>
-            </li>
-          ))}
-        </ul>
+        <nav>
+          <ul className={pagestyles.postList}>
+            {posts.map((post) => (
+              <li key={post._id} className={pagestyles.postItem}>
+                <a href={`/posts/${post.slug.current}`}>{post.title}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       ) : (
         <p>No posts found</p>
       )}

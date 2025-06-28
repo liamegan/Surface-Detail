@@ -2,24 +2,22 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  --foretrans: #1717171a;
+  --foreground: #1e1e1e;
+  --foretrans: #1e1e1e1a;
   --type-title: "Rubik", Arial, Helvetica, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #1e1e1e;
     --foreground: #ededed;
-    --foretrans: #ededed1a;
+    --foretrans: #ffffff1a;
   }
 }
 
 html,
 body {
   margin: 0;
-  // max-width: 100vw;
-  // overflow-y: hidden;
   font-size: var(--fontsize);
   line-height: var(--lineheight);
 }

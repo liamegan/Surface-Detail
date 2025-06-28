@@ -57,7 +57,7 @@ export default async function PostPage({
 
   return (
     <main>
-      <h1>{post.title}</h1>
+      <h2>{post.title}</h2>
       <PortableText value={post.body} components={components} />
     </main>
   );

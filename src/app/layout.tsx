@@ -1,3 +1,5 @@
+import { WheelContextProvider } from "@/components/MouseContextProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -5,7 +7,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <WheelContextProvider>
+        <body>{children}</body>
+      </WheelContextProvider>
     </html>
   );
 }

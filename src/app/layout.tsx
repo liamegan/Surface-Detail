@@ -1,4 +1,5 @@
 import { WheelContextProvider } from "@/components/MouseContextProvider";
+import { ClientLayout } from "@/components/ClientLayout";
 
 export default function RootLayout({
   children,
@@ -8,7 +9,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <WheelContextProvider>
-        <body>{children}</body>
+        <ClientLayout>{children}</ClientLayout>
       </WheelContextProvider>
     </html>
   );

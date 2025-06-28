@@ -48,7 +48,7 @@ export default async function PostPage({
   const { slug } = await params;
 
   const query = groq`*[ _type == "post" && slug.current == $slug ][0] {
-    _id, title, body
+    _id, title, body, publishedAt
   }`;
 
   const post: Post = await client.fetch(query, { slug });
@@ -56,11 +56,14 @@ export default async function PostPage({
   if (!post) return <div>No post found for {slug}</div>;
 
   return (
-    <>
-      <h2>{post.title}</h2>
+    <article>
+      <header>
+        <h2>{post.title}</h2>
+        <p>{new Date(post.publishedAt).toDateString()}</p>
+      </header>
       <main>
         <PortableText value={post.body} components={components} />
       </main>
-    </>
+    </article>
   );
 }

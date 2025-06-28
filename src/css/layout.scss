@@ -14,6 +14,20 @@
   padding: 0 2em;
   width: calc(300px + 4em);
 }
+article {
+  header {
+    height: calc(var(--baseline) * 2);
+    display: flex;
+    align-items: center;
+    h2,
+    p {
+      display: inline-block;
+    }
+    p {
+      margin: 0 0 0 1em;
+    }
+  }
+}
 main {
   column-count: 10;
   column-width: 500px;

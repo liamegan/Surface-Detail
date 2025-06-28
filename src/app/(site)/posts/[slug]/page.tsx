@@ -9,6 +9,7 @@ import styles from "./post.module.scss";
 interface Post {
   _id: string;
   title: string;
+  publishedAt: string;
   body: PortableTextBlock[];
 }
 
@@ -58,7 +59,7 @@ export default async function PostPage({
   return (
     <article>
       <header>
-        <h2>{post.title}</h2>
+        <h2 className="heading1">{post.title}</h2>
         <p>{new Date(post.publishedAt).toDateString()}</p>
       </header>
       <main>

@@ -1,5 +1,13 @@
+import { Rubik } from "next/font/google";
+
 import { WheelContextProvider } from "@/components/MouseContextProvider";
 import { ClientLayout } from "@/components/ClientLayout";
+import { classnames } from "@/utils/classnames";
+
+const rubik = Rubik({
+  subsets: ["latin-ext"],
+});
+const fonts = [rubik];
 
 export default function RootLayout({
   children,
@@ -7,10 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <WheelContextProvider>
-        <ClientLayout>{children}</ClientLayout>
-      </WheelContextProvider>
+    <html className={classnames(fonts.map((f) => f.className))} lang="en">
+      <body>
+        <WheelContextProvider>
+          <ClientLayout>{children}</ClientLayout>
+        </WheelContextProvider>
+      </body>
     </html>
   );
 }

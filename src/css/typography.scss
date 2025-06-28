@@ -11,7 +11,7 @@ nav ul {
     padding-left: 1rem;
     position: relative;
     &::before {
-      border-left: 2px solid #ffffff55;
+      border-left: 2px solid var(--foretrans);
       content: "";
       display: inline-block;
       height: calc(100% - 1px);
@@ -26,7 +26,7 @@ a {
   text-decoration: underline;
   &::after {
     content: "";
-    border-top: 2px solid white;
+    border-top: 2px solid var(--foreground);
     bottom: 0;
     left: 0;
     position: absolute;
@@ -49,24 +49,32 @@ li {
 h1,
 h2,
 h3,
-h4 {
+h4,
+.heading1,
+.heading2,
+.heading3,
+.heading4 {
   margin-bottom: 0;
 }
-h1 {
+h1,
+.heading1 {
   font-size: 2rem;
   line-height: calc(var(--baseline) * 2);
   font-weight: 800;
 
   font-optical-sizing: auto;
 }
-h2 {
+h2,
+.heading2 {
   font-size: 2rem;
   line-height: calc(var(--baseline) * 2);
   font-weight: 600;
 }
-h3 {
+h3,
+.heading3 {
   font-weight: 600;
 }
-h4 {
+h4,
+.heading4 {
   font-weight: 600;
 }

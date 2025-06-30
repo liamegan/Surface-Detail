@@ -1,5 +1,7 @@
 import { Rubik } from "next/font/google";
 
+import { Analytics } from "@vercel/analytics/next";
+
 import { WheelContextProvider } from "@/components/MouseContextProvider";
 import { ClientLayout } from "@/components/ClientLayout";
 import { classnames } from "@/utils/classnames";
@@ -20,6 +22,7 @@ export default function RootLayout({
         <WheelContextProvider>
           <ClientLayout>{children}</ClientLayout>
         </WheelContextProvider>
+        <Analytics />
       </body>
     </html>
   );

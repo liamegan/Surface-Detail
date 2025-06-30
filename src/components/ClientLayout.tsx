@@ -15,7 +15,6 @@ export function ClientLayout({ children }: ClientLayoutProps) {
       const scrollAmount = wheelData.deltaY * 3;
       window.scrollBy({
         left: scrollAmount,
-        behavior: "smooth",
       });
     }
   }, [wheelData]);

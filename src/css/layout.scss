@@ -25,12 +25,12 @@ article {
   }
 }
 main {
-  column-count: 10;
-  column-width: min(95vw, 500px);
+  column-count: 100;
+  column-width: min(95vw, 400px);
   column-gap: 2em;
   column-rule: 1px solid var(--foretrans);
   gap: 2em;
   margin: 0;
-  min-width: min(95vw, 500px);
+  min-width: min(95vw, 400px);
   max-height: calc(100vh - var(--baseline) * 6);
 }

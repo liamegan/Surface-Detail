@@ -1,4 +1,4 @@
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { groq } from "next-sanity";
 import { PortableText, PortableTextBlock } from "next-sanity";
 import { Image } from "next-sanity/image";
@@ -7,10 +7,12 @@ import { buildSrc } from "@sanity-image/url-builder";
 import styles from "./post.module.scss";
 
 interface Post {
-  _id: string;
-  title: string;
-  publishedAt: string;
-  body: PortableTextBlock[];
+  data: {
+    _id: string;
+    title: string;
+    publishedAt: string;
+    body: PortableTextBlock[];
+  };
 }
 
 const components = {
@@ -52,18 +54,19 @@ export default async function PostPage({
     _id, title, body, publishedAt
   }`;
 
-  const post: Post = await client.fetch(query, { slug });
+  const post: Post = await sanityFetch({ query, params });
+  console.log("Post:", post);
 
   if (!post) return <div>No post found for {slug}</div>;
 
   return (
     <article>
       <header>
-        <h2 className="heading1">{post.title}</h2>
-        <p>{new Date(post.publishedAt).toDateString()}</p>
+        <h2 className="heading1">{post.data.title}</h2>
+        <p>{new Date(post.data.publishedAt).toDateString()}</p>
       </header>
       <main>
-        <PortableText value={post.body} components={components} />
+        <PortableText value={post.data.body} components={components} />
       </main>
     </article>
   );

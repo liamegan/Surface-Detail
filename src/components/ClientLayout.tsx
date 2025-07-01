@@ -19,5 +19,5 @@ export function ClientLayout({ children }: ClientLayoutProps) {
     }
   }, [wheelData]);
 
-  return <body>{children}</body>;
+  return <>{children}</>;
 }

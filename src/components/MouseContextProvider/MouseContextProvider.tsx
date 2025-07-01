@@ -1,5 +1,7 @@
 "use client";
 
+import { useDraftModeEnvironment } from "next-sanity/hooks";
+
 import React, {
   createContext,
   useContext,
@@ -43,11 +45,13 @@ export const WheelContextProvider: React.FC<WheelContextProviderProps> = ({
   const [scrollDirection, setScrollDirection] = useState<
     "up" | "down" | "left" | "right" | null
   >(null);
+  const env = useDraftModeEnvironment();
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
 
     const handleWheel = (event: WheelEvent) => {
+      console.log(event);
       event.preventDefault();
 
       const newWheelData: WheelData = {
@@ -78,14 +82,17 @@ export const WheelContextProvider: React.FC<WheelContextProviderProps> = ({
     };
 
     // Add event listener with passive: false to allow preventDefault
-    window.addEventListener("wheel", handleWheel, { passive: false });
+    console.log("Environment:", env);
+    if (env === "live" || env === "unknown")
+      window.addEventListener("wheel", handleWheel, { passive: false });
+    else window.removeEventListener("wheel", handleWheel);
 
     // Cleanup
     return () => {
       window.removeEventListener("wheel", handleWheel);
       clearTimeout(timeoutId);
     };
-  }, []);
+  }, [env]);
 
   const value: WheelContextType = {
     wheelData,

@@ -1,9 +1,12 @@
 import Link from "next/link";
 
+import { draftMode } from "next/headers";
+
 import styles from "./sidebar.module.scss";
 import { classnames } from "@/utils/classnames";
+import { DisableDraftMode } from "@/components/DisableDraftMode";
 
-export function Sidebar() {
+export async function Sidebar() {
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
@@ -84,6 +87,11 @@ export function Sidebar() {
               Bluesky
             </a>
           </li>
+          {(await draftMode()).isEnabled && (
+            <li>
+              <DisableDraftMode />
+            </li>
+          )}
         </ul>
       </nav>
       <p>All work, writing and random musings copyright Liam Egan.</p>

@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+
+import { WheelContextProvider } from "@/components/MouseContextProvider";
+import { ClientLayout } from "@/components/ClientLayout";
+
 import { Sidebar } from "./components/sidebar";
 
 import "@/css/styles.scss";
@@ -16,11 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={"wrapper"}>
-      <div>
-        <Sidebar />
-      </div>
-      <div className={"main"}>{children}</div>
-    </div>
+    <WheelContextProvider>
+      <ClientLayout>
+        <div className={"wrapper"}>
+          <div>
+            <Sidebar />
+          </div>
+          <div className={"main"}>{children}</div>
+        </div>
+      </ClientLayout>
+    </WheelContextProvider>
   );
 }

@@ -3,6 +3,8 @@ import { groq } from "next-sanity";
 import { PortableText, PortableTextBlock } from "next-sanity";
 
 import { image } from "@/components/image";
+import { codepen } from "@/components/codepen";
+import { code } from "@/components/code";
 interface Post {
   data: {
     _id: string;
@@ -15,6 +17,8 @@ interface Post {
 const components = {
   types: {
     image,
+    codepen,
+    code,
   },
 };
 
@@ -30,9 +34,8 @@ export default async function PostPage({
   }`;
 
   const post: Post = await sanityFetch({ query, params });
-  console.log("Post:", post);
 
-  if (!post) return <div>No post found for {slug}</div>;
+  if (!post?.data) return <div>No post found for {slug}</div>;
 
   return (
     <article>

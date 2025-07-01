@@ -1,6 +1,6 @@
-import { client } from "@/sanity/lib/client";
+// import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
-import { groq } from "next-sanity";
+import { groq, PortableTextBlock } from "next-sanity";
 
 import pagestyles from "./page.module.scss";
 
@@ -8,6 +8,7 @@ interface Post {
   _id: string;
   title: string;
   publishedAt: string;
+  slug: { current: string };
   body: PortableTextBlock[];
 }
 interface Posts {

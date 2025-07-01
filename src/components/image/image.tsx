@@ -14,8 +14,6 @@ export const image = ({
     baseUrl: `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/`,
   });
 
-  console.log(value.asset._ref);
-
   const baselinefactor = 14 * 1.5;
 
   return (

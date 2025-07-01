@@ -23,7 +23,6 @@ export default async function Home() {
   } | order(publishedAt desc)`;
 
   const posts: Posts = await sanityFetch({ query });
-  console.log("Posts:", posts);
 
   return (
     <main className={pagestyles.main}>

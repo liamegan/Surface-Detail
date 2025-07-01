@@ -51,7 +51,6 @@ export const WheelContextProvider: React.FC<WheelContextProviderProps> = ({
     let timeoutId: NodeJS.Timeout;
 
     const handleWheel = (event: WheelEvent) => {
-      console.log(event);
       event.preventDefault();
 
       const newWheelData: WheelData = {
@@ -82,7 +81,6 @@ export const WheelContextProvider: React.FC<WheelContextProviderProps> = ({
     };
 
     // Add event listener with passive: false to allow preventDefault
-    console.log("Environment:", env);
     if (env === "live" || env === "unknown")
       window.addEventListener("wheel", handleWheel, { passive: false });
     else window.removeEventListener("wheel", handleWheel);

@@ -1,0 +1,6 @@
+.img {
+  height: var(--height);
+  width: min(100%, var(--width));
+  object-fit: cover;
+  object-position: 50% 50%;
+}

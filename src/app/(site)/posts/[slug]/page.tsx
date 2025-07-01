@@ -1,11 +1,8 @@
 import { sanityFetch } from "@/sanity/lib/live";
 import { groq } from "next-sanity";
 import { PortableText, PortableTextBlock } from "next-sanity";
-import { Image } from "next-sanity/image";
-import { buildSrc } from "@sanity-image/url-builder";
 
-import styles from "./post.module.scss";
-
+import { image } from "@/components/image";
 interface Post {
   data: {
     _id: string;
@@ -17,29 +14,7 @@ interface Post {
 
 const components = {
   types: {
-    image: ({ value }: { value: { asset: { _ref: string } } }) => {
-      const { src, width, height } = buildSrc({
-        id: value.asset._ref,
-        width: 1000,
-        // height: 306,
-        baseUrl: `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/`,
-      });
-
-      const baselinefactor = 14 * 1.5;
-
-      return (
-        <div
-          className={styles.imageContainer}
-          style={
-            {
-              ["--height" as string]: `${Math.floor(height / baselinefactor) * baselinefactor}px`,
-            } as React.CSSProperties
-          }
-        >
-          <Image src={src} alt="Sanity Image" width={width} height={height} />
-        </div>
-      );
-    },
+    image,
   },
 };
 

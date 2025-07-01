@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { groq } from "next-sanity";
 
 import pagestyles from "./page.module.scss";
@@ -6,8 +7,11 @@ import pagestyles from "./page.module.scss";
 interface Post {
   _id: string;
   title: string;
-  slug: { current: string };
   publishedAt: string;
+  body: PortableTextBlock[];
+}
+interface Posts {
+  data: Post[];
 }
 
 export default async function Home() {
@@ -18,15 +22,16 @@ export default async function Home() {
     publishedAt
   } | order(publishedAt desc)`;
 
-  const posts: Post[] = await client.fetch(query);
+  const posts: Posts = await sanityFetch({ query });
+  console.log("Posts:", posts);
 
   return (
     <main className={pagestyles.main}>
       <h2 className="heading1">Posts</h2>
-      {posts.length > 0 ? (
+      {posts.data.length > 0 ? (
         <nav>
           <ul className={pagestyles.postList}>
-            {posts.map((post) => (
+            {posts.data.map((post) => (
               <li key={post._id} className={pagestyles.postItem}>
                 <a href={`/posts/${post.slug.current}`}>
                   {post.title} - {new Date(post.publishedAt).toDateString()}

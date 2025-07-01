@@ -27,7 +27,9 @@ export default async function Home() {
 
   return (
     <main className={pagestyles.main}>
-      <h2 className="heading1">Posts</h2>
+      <header>
+        <h2 className="heading1">Posts</h2>
+      </header>
       {posts.data.length > 0 ? (
         <nav>
           <ul className={pagestyles.postList}>

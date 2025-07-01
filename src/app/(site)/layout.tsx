@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Liam Egan", url: "https://github.com/liamegan" }],
   creator: "Liam Egan",
   description: "A small online space to muse and experiment.",
+  alternates: {
+    types: {
+      "application/rss+xml": "/api/rss",
+    },
+  },
 };
 
 export default function RootLayout({

@@ -34,3 +34,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## RSS Feed
+
+This blog includes an RSS feed that automatically updates when new posts are published. The feed is available at:
+
+- **RSS Feed**: `/api/rss` - XML feed of all blog posts
+- **Sitemap**: `/sitemap.xml` - XML sitemap for search engines
+- **Robots.txt**: `/robots.txt` - Search engine crawling instructions
+
+The RSS feed includes:
+
+- Post titles and descriptions
+- Publication dates
+- Direct links to full posts
+- Automatic updates when new content is published
+
+You can subscribe to the RSS feed using any RSS reader by adding the feed URL to your reader.

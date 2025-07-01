@@ -87,6 +87,11 @@ export async function Sidebar() {
               Bluesky
             </a>
           </li>
+          <li>
+            <a href="/api/rss" target="_blank" rel="noopener noreferrer">
+              RSS Feed
+            </a>
+          </li>
           {(await draftMode()).isEnabled && (
             <li>
               <DisableDraftMode />

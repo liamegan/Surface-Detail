@@ -14,18 +14,16 @@ export const codepen = ({
   console.log("Codepen URL:", embdedURL);
 
   return (
-    <div className={styles.codepen}>
+    <div
+      className={styles.codepen}
+      style={
+        {
+          ["--height" as string]: `${Math.floor(400 / baselinefactor) * baselinefactor}px`,
+        } as React.CSSProperties
+      }
+    >
       <h3 className={styles.title}>{value.title}</h3>
-      <iframe
-        className={styles.iframe}
-        src={embdedURL}
-        allowFullScreen
-        style={
-          {
-            ["--height" as string]: `${Math.floor(400 / baselinefactor) * baselinefactor}px`,
-          } as React.CSSProperties
-        }
-      />
+      <iframe className={styles.iframe} src={embdedURL} allowFullScreen />
     </div>
   );
 };

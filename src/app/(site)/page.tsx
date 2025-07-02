@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 // import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
 import { groq, PortableTextBlock } from "next-sanity";
@@ -35,9 +37,9 @@ export default async function Home() {
           <ul className={pagestyles.postList}>
             {posts.data.map((post) => (
               <li key={post._id} className={pagestyles.postItem}>
-                <a href={`/posts/${post.slug.current}`}>
+                <Link href={`/posts/${post.slug.current}`}>
                   {post.title} - {new Date(post.publishedAt).toDateString()}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

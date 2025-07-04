@@ -1,9 +1,11 @@
 .wrapper {
+  --colWidth: calc(300px + 4em);
+  --textColWidth: max(300px, min(95vw, 600px));
   display: grid;
-  grid-template-columns: calc(300px + 4em) auto;
+  grid-template-columns: var(--colWidth) auto;
   gap: 1rem;
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: calc(var(--textColWidth) + var(--colWidth));
   position: relative;
   width: 100vw;
   > * {
@@ -27,11 +29,11 @@ article {
 }
 main {
   column-count: 100;
-  column-width: min(95vw, 400px);
+  column-width: var(--textColWidth);
   column-gap: 2em;
   column-rule: 1px solid var(--foretrans);
   gap: 2em;
   margin: 0;
-  min-width: min(95vw, 400px);
+  min-width: min(95vw, 600px);
   max-height: calc(100vh - var(--baseline) * 6);
 }

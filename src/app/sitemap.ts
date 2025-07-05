@@ -13,14 +13,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
   // Get all posts
-  const query = groq`*[_type == "post"] {
+  const sitemapQuery = groq`*[_type == "post"] {
     _id,
     title,
     slug,
     publishedAt
   } | order(publishedAt desc)`;
 
-  const posts: { data: Post[] } = await sanityFetch({ query });
+  const posts: { data: Post[] } = await sanityFetch({ query: sitemapQuery });
 
   // Create sitemap entries for posts
   const postEntries = posts.data.map((post) => ({

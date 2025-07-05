@@ -12,7 +12,7 @@ interface Post {
 }
 
 export async function GET() {
-  const query = groq`*[_type == "post"] {
+  const RSSQuery = groq`*[_type == "post"] {
     _id,
     title,
     slug,
@@ -20,7 +20,7 @@ export async function GET() {
     body
   } | order(publishedAt desc)`;
 
-  const posts: { data: Post[] } = await sanityFetch({ query });
+  const posts: { data: Post[] } = await sanityFetch({ query: RSSQuery });
 
   const feed = new RSS({
     title: "Surface Detail",

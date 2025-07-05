@@ -11,8 +11,6 @@ export const codepen = ({
       ? value.url
       : value.url.replace("pen/", "embed/") + "?default-tab=result";
 
-  console.log("Codepen URL:", embdedURL);
-
   return (
     <div
       className={styles.codepen}

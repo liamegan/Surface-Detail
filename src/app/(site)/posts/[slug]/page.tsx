@@ -1,25 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { sanityFetch } from "@/sanity/lib/live";
 import { groq } from "next-sanity";
 import { buildSrc } from "@sanity-image/url-builder";
-import { PortableText, PortableTextBlock } from "next-sanity";
+import { PortableText } from "next-sanity";
 
 import { image } from "@/components/image";
 import { codepen } from "@/components/codepen";
 import { code } from "@/components/code";
-interface Post {
-  data: {
-    _id: string;
-    title: string;
-    publishedAt: string;
-    body: PortableTextBlock[];
-    mainImage?: {
-      asset: {
-        _ref: string;
-      };
-    };
-  };
+
+interface InternalLinkProps {
+  children: React.ReactNode;
+  value?: { slug?: { current?: string } };
 }
 
 const components = {
@@ -28,6 +21,12 @@ const components = {
     codepen,
     code,
   },
+  marks: {
+    internalLink: (props: InternalLinkProps) => {
+      const href = `/posts/${props.value?.slug?.current}`;
+      return <Link href={href}>{props.children}</Link>;
+    },
+  },
 };
 
 export async function generateMetadata({
@@ -35,11 +34,11 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const query = groq`*[ _type == "post" && slug.current == $slug ][0] {
+  const metaQuery = groq`*[ _type == "post" && slug.current == $slug ][0] {
     _id, title, publishedAt, mainImage
   }`;
 
-  const post: Post = await sanityFetch({ query, params });
+  const post = await sanityFetch({ query: metaQuery, params });
 
   let src = null;
   if (post?.data?.mainImage?.asset?._ref) {
@@ -49,8 +48,6 @@ export async function generateMetadata({
       baseUrl: `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/`,
     }));
   }
-
-  console.log(src);
 
   return {
     title: post.data.title,
@@ -68,15 +65,20 @@ export default async function PostPage({
 }) {
   const { slug } = await params;
 
-  const query = groq`*[ _type == "post" && slug.current == $slug ][0] {
-    _id, title, body, publishedAt, mainImage
+  const postQuery = groq`*[ _type == "post" && slug.current == $slug ][0] {
+    _id, title, body[]{
+      ..., markDefs[]{
+        ...,
+        _type == "internalLink" => {
+          "slug": @.reference->slug
+        }
+      }
+    }, publishedAt, mainImage
   }`;
 
-  const post: Post = await sanityFetch({ query, params });
+  const post = await sanityFetch({ query: postQuery, params });
 
   if (!post?.data) return <div>No post found for {slug}</div>;
-
-  console.log("Post data:", post.data);
 
   return (
     <article>

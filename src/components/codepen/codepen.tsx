@@ -22,7 +22,7 @@ export const codepen = ({
         } as React.CSSProperties
       }
     >
-      <h3 className={styles.title}>{value.title}</h3>
+      {/* <h3 className={styles.title}>{value.title}</h3> */}
       <iframe className={styles.iframe} src={embdedURL} allowFullScreen />
     </div>
   );

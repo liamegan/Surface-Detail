@@ -21,6 +21,20 @@
   }
 }
 
+.logolink {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    &::after {
+      display: none;
+    }
+  }
+}
+
 @keyframes circle--1 {
   0% {
     cx: 10%;

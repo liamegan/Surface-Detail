@@ -10,52 +10,54 @@ export async function Sidebar() {
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
-        <svg width="100%" height="100%" aria-hidden="true">
-          <defs>
-            <filter id="blur_filter" x="0" y="0">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
-            </filter>
-          </defs>
-          <clipPath id="clip">
-            <text
-              y="1.1em"
-              className={classnames(["heading1", styles.svgtext])}
-            >
-              Surface Detail
-            </text>
-          </clipPath>
-          <g clipPath="url(#clip)">
-            <rect cx="0" cy="0" width="110%" height="100%" fill="26247b" />
-            <g filter="url(#blur_filter)" id="logobg">
-              <rect
-                className={styles.bg}
-                cx="0"
-                cy="0"
-                width="100%"
-                height="100%"
-                fill="#26247b"
-              />
-              <circle
-                className={classnames([styles.circle, styles.circle1])}
-                cx="50%"
-                cy="50%"
-                r="80px"
-              />
-              <circle
-                className={classnames([styles.circle, styles.circle2])}
-                cx="50%"
-                cy="50%"
-                r="70px"
-              />
-              <circle
-                className={classnames([styles.circle, styles.circle3])}
-                cx="50%"
-                cy="50%"
-                r="60px"
-              />
+        <Link className={styles.logolink} href="/">
+          <svg width="100%" height="100%" aria-hidden="true">
+            <defs>
+              <filter id="blur_filter" x="0" y="0">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+              </filter>
+            </defs>
+            <clipPath id="clip">
+              <text
+                y="1.1em"
+                className={classnames(["heading1", styles.svgtext])}
+              >
+                Surface Detail
+              </text>
+            </clipPath>
+            <g clipPath="url(#clip)">
+              <rect cx="0" cy="0" width="110%" height="100%" fill="26247b" />
+              <g filter="url(#blur_filter)" id="logobg">
+                <rect
+                  className={styles.bg}
+                  cx="0"
+                  cy="0"
+                  width="100%"
+                  height="100%"
+                  fill="#26247b"
+                />
+                <circle
+                  className={classnames([styles.circle, styles.circle1])}
+                  cx="50%"
+                  cy="50%"
+                  r="80px"
+                />
+                <circle
+                  className={classnames([styles.circle, styles.circle2])}
+                  cx="50%"
+                  cy="50%"
+                  r="70px"
+                />
+                <circle
+                  className={classnames([styles.circle, styles.circle3])}
+                  cx="50%"
+                  cy="50%"
+                  r="60px"
+                />
+              </g>
             </g>
-          </g>
-        </svg>
+          </svg>
+        </Link>
         <h1 className={"logo"}>Surface Detail</h1>
       </div>
       <p>

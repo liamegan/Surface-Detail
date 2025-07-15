@@ -4,9 +4,12 @@ import { Refractor } from "react-refractor";
 
 // registerLanguage(js);
 
+import styles from "./code.module.scss";
+
 export function code(props) {
   return (
     <Refractor
+      className={styles.container}
       language={props.value.language}
       value={props.value.code}
       plainText={true}

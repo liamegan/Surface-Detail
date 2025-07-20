@@ -9,6 +9,7 @@ import { PortableText } from "next-sanity";
 import { image } from "@/components/image";
 import { codepen } from "@/components/codepen";
 import { code } from "@/components/code";
+import { ArticleSeries } from "@/components/ArticleSeries";
 
 interface InternalLinkProps {
   children: React.ReactNode;
@@ -87,6 +88,7 @@ export default async function PostPage({
         <p>{new Date(post.data.publishedAt).toDateString()}</p>
       </header>
       <main>
+        <ArticleSeries slug={slug} />
         <PortableText value={post.data.body} components={components} />
       </main>
     </article>

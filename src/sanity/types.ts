@@ -13,6 +13,22 @@
  */
 
 // Source: schema.json
+export type ArticleSeries = {
+  _id: string;
+  _type: "articleSeries";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  list?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "post";
+  }>;
+};
+
 export type Codepen = {
   _type: "codepen";
   title?: string;
@@ -280,7 +296,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Codepen | Category | BlockContent | Post | Author | Code | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = ArticleSeries | Codepen | Category | BlockContent | Post | Author | Code | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/app/(site)/page.tsx
 // Variable: query
@@ -412,6 +428,32 @@ export type SitemapQueryResult = Array<{
   publishedAt: string | null;
 }>;
 
+// Source: ./src/components/ArticleSeries/ArticleSeries.tsx
+// Variable: seriesQuery
+// Query: *[_type == "articleSeries" && references(    *[_type == "post" && slug.current == $slug ][0]._id)][0] {      title,      "list": list[]->{        _id, title, slug, publishedAt, mainImage      }  }
+export type SeriesQueryResult = {
+  title: string | null;
+  list: Array<{
+    _id: string;
+    title: string | null;
+    slug: Slug | null;
+    publishedAt: string | null;
+    mainImage: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    } | null;
+  }> | null;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -420,5 +462,6 @@ declare module "@sanity/client" {
     "*[ _type == \"post\" && slug.current == $slug ][0] {\n    _id, title, publishedAt, mainImage\n  }": MetaQueryResult;
     "*[ _type == \"post\" && slug.current == $slug ][0] {\n    _id, title, body[]{\n      ..., markDefs[]{\n        ...,\n        _type == \"internalLink\" => {\n          \"slug\": @.reference->slug\n        }\n      }\n    }, publishedAt, mainImage\n  }": PostQueryResult;
     "*[_type == \"post\"] {\n    _id,\n    title,\n    slug,\n    publishedAt,\n    body\n  } | order(publishedAt desc)": RSSQueryResult;
+    "*[_type == \"articleSeries\" && references(\n    *[_type == \"post\" && slug.current == $slug ][0]._id)][0] {\n      title,\n      \"list\": list[]->{\n        _id, title, slug, publishedAt, mainImage\n      }\n  }": SeriesQueryResult;
   }
 }

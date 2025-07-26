@@ -1,18 +1,19 @@
 import React from "react";
-import { Refractor } from "react-refractor";
+import { Refractor, registerLanguage } from "react-refractor";
+import js from 'refractor/javascript'
 // import js from "refractor/lang/javascript.js";
-
-// registerLanguage(js);
+//
+registerLanguage(js);
 
 import styles from "./code.module.scss";
 
 export function code(props) {
+  console.log(props)
   return (
     <Refractor
       className={styles.container}
-      language={props.value.language}
+      language="js"
       value={props.value.code}
-      plainText={true}
     />
   );
 }

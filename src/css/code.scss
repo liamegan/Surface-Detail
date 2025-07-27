@@ -1,9 +1,10 @@
 .language-js {
-  background: #222228;
+  background: #22222888;
 }
 
 .token.keyword {
   color: #AAEEFF;
+  text-shadow: 0 0 5px #88EEFF66;
 }
 .token.function {
   color: #FFEEAA;
@@ -13,7 +14,15 @@
 }
 .token.comment {
   color: #88EEFF;
+  text-shadow: 0 0 5px #88EEFF66;
+}
+.token.number {
+  color: #FFAAEE;
+  text-shadow: 0 0 5px #FFAAEE99;
 }
 .token.string {
-  color: #FFAAEE;
+  color: #AAFFEE;
+}
+.token.punctuation {
+  color: #AAA;
 }

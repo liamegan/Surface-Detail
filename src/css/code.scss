@@ -1,7 +1,14 @@
+pre {
+  color: #FFF;
+  background: #222228EE;
+  padding-left: 5px;
+}
 .language-js {
-  background: #22222888;
 }
 
+.token {
+  color: #FFF;
+}
 .token.keyword {
   color: #AAEEFF;
   text-shadow: 0 0 5px #88EEFF66;
@@ -25,4 +32,10 @@
 }
 .token.punctuation {
   color: #AAA;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre {
+    background: #22222888;
+  }
 }

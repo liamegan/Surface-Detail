@@ -8,7 +8,6 @@ registerLanguage(js);
 import styles from "./code.module.scss";
 
 export function code(props) {
-  console.log(props)
   return (
     <Refractor
       className={styles.container}

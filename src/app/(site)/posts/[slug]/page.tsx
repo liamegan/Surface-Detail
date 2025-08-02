@@ -15,6 +15,10 @@ interface InternalLinkProps {
   children: React.ReactNode;
   value?: { slug?: { current?: string } };
 }
+interface ExternalLinkProps {
+  children: React.ReactNode;
+  value?: { href?: string };
+}
 
 const components = {
   types: {
@@ -27,6 +31,9 @@ const components = {
       const href = `/posts/${props.value?.slug?.current}`;
       return <Link href={href}>{props.children}</Link>;
     },
+    link: (props: ExternalLinkProps) => {
+      return <a href={props.value?.href} target="_blank"  rel="noopener">{props.children}</a>
+    }
   },
 };
 

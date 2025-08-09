@@ -11,6 +11,8 @@ import { codepen } from "@/components/codepen";
 import { code } from "@/components/code";
 import { ArticleSeries } from "@/components/ArticleSeries";
 
+import styles from "./post.module.scss"
+
 interface InternalLinkProps {
   children: React.ReactNode;
   value?: { slug?: { current?: string } };
@@ -29,7 +31,7 @@ const components = {
   marks: {
     internalLink: (props: InternalLinkProps) => {
       const href = `/posts/${props.value?.slug?.current}`;
-      return <Link href={href}>{props.children}</Link>;
+      return <Link href={href} className={styles.postLink}>{props.children}</Link>;
     },
     link: (props: ExternalLinkProps) => {
       return <a href={props.value?.href} target="_blank"  rel="noopener">{props.children}</a>

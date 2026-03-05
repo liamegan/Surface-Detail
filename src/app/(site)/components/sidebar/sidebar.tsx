@@ -26,7 +26,7 @@ export async function Sidebar() {
               </text>
             </clipPath>
             <g clipPath="url(#clip)">
-              <rect cx="0" cy="0" width="110%" height="100%" fill="26247b" />
+              <rect cx="0" cy="0" width="110%" height="100%" fill="#26247b" />
               <g filter="url(#blur_filter)" id="logobg">
                 <rect
                   className={styles.bg}

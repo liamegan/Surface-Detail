@@ -1,4 +1,3 @@
-import React from "react";
 import { Refractor, registerLanguage } from "react-refractor";
 import js from "refractor/javascript";
 import ts from "refractor/typescript";

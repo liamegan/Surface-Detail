@@ -22,7 +22,7 @@ export async function ArticleSeries({ slug }: { slug: string }) {
   const seriesObject: SeriesQueryResult = series.data;
 
   if (!series.data || !seriesObject || !seriesObject.list) {
-    return <></>;
+    return null;
   }
 
   return (

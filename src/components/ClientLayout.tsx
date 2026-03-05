@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useEffect /*, useState */ } from "react";
+import { ReactNode, useEffect } from "react";
 import { useWheel } from "./MouseContextProvider";
 
 interface ClientLayoutProps {
@@ -8,17 +8,6 @@ interface ClientLayoutProps {
 
 export function ClientLayout({ children }: ClientLayoutProps) {
   const { wheelData } = useWheel();
-  // const [vh, setVh] = useState(0);
-
-  // useEffect(() => {
-  //   function resizeListener() {
-  //     const vh = window.innerHeight * 0.01;
-  //     setVh(vh);
-  //   }
-  //   resizeListener();
-  //   window.addEventListener("resize", resizeListener);
-  //   return () => window.removeEventListener("resize", resizeListener);
-  // }, []);
 
   useEffect(() => {
     if (wheelData && wheelData.deltaY !== 0) {
@@ -29,12 +18,5 @@ export function ClientLayout({ children }: ClientLayoutProps) {
     }
   }, [wheelData]);
 
-  return (
-    <>
-      {/*<div style={{ ['--vh' as string]: `${vh}px` }} className=\"body\">*/}
-
-      {children}
-      {/*</div>*/}
-    </>
-  );
+  return <>{children}</>;
 }

@@ -131,10 +131,9 @@ npm run typegen   # Regenerate Sanity types after schema changes
 
 ## Known Issues / TODOs
 
-- `ClientLayout.tsx` has commented-out `--vh` CSS variable logic (viewport height for mobile) — not yet implemented
-- Some commented-out body centering styles in `styles.scss` — leftover from layout experiments
-- `page.tsx` (home) has a commented-out direct `client` import — uses `sanityFetch` correctly now
 - No 404 handling on post page beyond `<div>No post found for {slug}</div>`
 - No pagination on the home post list
 - No category/tag filtering
 - RSS body is plain-text only (no HTML rendering of Portable Text)
+- Baseline value duplicated between `src/utils/consts.ts` (JS) and `src/css/baseline.scss` (CSS custom props) — must be kept in sync manually
+- `layout.scss` uses `column-count: 100` as a hack for auto-column count — intentional but non-obvious

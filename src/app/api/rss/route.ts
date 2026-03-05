@@ -1,15 +1,8 @@
 import { sanityFetch } from "@/sanity/lib/live";
-import { groq, PortableTextBlock } from "next-sanity";
+import { groq } from "next-sanity";
 import RSS from "rss";
 import { NextResponse } from "next/server";
-
-interface Post {
-  _id: string;
-  title: string;
-  publishedAt: string;
-  slug: { current: string };
-  body: PortableTextBlock[];
-}
+import type { RSSQueryResult } from "@/sanity/types";
 
 export async function GET() {
   const RSSQuery = groq`*[_type == "post"] {
@@ -20,7 +13,7 @@ export async function GET() {
     body
   } | order(publishedAt desc)`;
 
-  const posts: { data: Post[] } = await sanityFetch({ query: RSSQuery });
+  const posts: { data: RSSQueryResult } = await sanityFetch({ query: RSSQuery });
 
   const feed = new RSS({
     title: "Surface Detail",
@@ -37,18 +30,16 @@ export async function GET() {
   });
 
   posts.data.forEach((post) => {
+    if (!post.slug || !post.title || !post.publishedAt) return;
+
     // Convert PortableText to plain text for RSS description
     const plainTextBody =
       post.body
-        ?.map((block: PortableTextBlock) => {
+        ?.map((block) => {
           if (block._type === "block") {
             return (
               block.children
-                ?.map((child) =>
-                  typeof child === "object" && "text" in child
-                    ? (child as { text?: string }).text || ""
-                    : ""
-                )
+                ?.map((child: { text?: string }) => child.text || "")
                 .join("") || ""
             );
           }

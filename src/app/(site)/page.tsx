@@ -1,21 +1,10 @@
 import Link from "next/link";
 
-// import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
-import { groq, PortableTextBlock } from "next-sanity";
+import { groq } from "next-sanity";
+import type { QueryResult } from "@/sanity/types";
 
 import pagestyles from "./page.module.scss";
-
-interface Post {
-  _id: string;
-  title: string;
-  publishedAt: string;
-  slug: { current: string };
-  body: PortableTextBlock[];
-}
-interface Posts {
-  data: Post[];
-}
 
 export default async function Home() {
   const query = groq`*[_type == "post"] {
@@ -25,7 +14,7 @@ export default async function Home() {
     publishedAt
   } | order(publishedAt desc)`;
 
-  const posts: Posts = await sanityFetch({ query });
+  const posts: { data: QueryResult } = await sanityFetch({ query });
 
   return (
     <main className={pagestyles.main}>
@@ -35,10 +24,10 @@ export default async function Home() {
       {posts.data.length > 0 ? (
         <nav>
           <ul className={pagestyles.postList}>
-            {posts.data.map((post) => (
+            {posts.data.map((post) => post.slug && (
               <li key={post._id} className={pagestyles.postItem}>
                 <Link href={`/posts/${post.slug.current}`}>
-                  {post.title} - {new Date(post.publishedAt).toDateString()}
+                  {post.title}{post.publishedAt && ` - ${new Date(post.publishedAt).toDateString()}`}
                 </Link>
               </li>
             ))}

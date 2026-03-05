@@ -6,10 +6,12 @@ export const codepen = ({
 }: {
   value: { title: string; url: string };
 }) => {
-  const embdedURL =
-    value.url.indexOf("embed") !== -1
-      ? value.url
-      : value.url.replace("pen/", "embed/") + "?default-tab=result";
+  const embedURL = (() => {
+    const url = new URL(value.url);
+    url.pathname = url.pathname.replace(/\/(pen|embed)\//, "/embed/");
+    url.searchParams.set("default-tab", "result");
+    return url.toString();
+  })();
 
   return (
     <div
@@ -21,7 +23,7 @@ export const codepen = ({
       }
     >
       {/* <h3 className={styles.title}>{value.title}</h3> */}
-      <iframe className={styles.iframe} src={embdedURL} allowFullScreen />
+      <iframe className={styles.iframe} src={embedURL} allowFullScreen />
     </div>
   );
 };

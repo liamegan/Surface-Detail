@@ -1,8 +1,8 @@
 p code {
   font-family: monospace;
   background: #222233;
-  color: #FFF;
-  text-shadow: 0 0 5px #88EEFF66;
+  color: #fff;
+  text-shadow: 0 0 5px #88eeff66;
   display: inline;
   line-height: 1;
   padding: 3px 5px;
@@ -11,39 +11,44 @@ p code {
 }
 
 pre {
-  color: #FFF;
-  background: #222228EE;
+  color: #fff;
+  background: #222228ee;
   padding-left: 5px;
 }
 .language-js {
 }
 
 .token {
-  color: #FFF;
+  color: #fff;
 }
-.token.keyword {
-  color: #AAEEFF;
-  text-shadow: 0 0 5px #88EEFF66;
+.token.keyword,
+.token.selector,
+.token.tag {
+  color: #aaeeff;
+  text-shadow: 0 0 5px #88eeff66;
 }
-.token.function {
-  color: #FFEEAA;
+.token.function,
+.token.attr-name,
+.token.property {
+  color: #ffeeaa;
 }
 .token.parameter {
-  color: #AAA;
+  color: #aaa;
 }
 .token.comment {
-  color: #88EEFF;
-  text-shadow: 0 0 5px #88EEFF66;
+  color: #88eeff;
+  text-shadow: 0 0 5px #88eeff66;
 }
 .token.number {
-  color: #FFAAEE;
-  text-shadow: 0 0 5px #FFAAEE99;
+  color: #ffaaee;
+  text-shadow: 0 0 5px #ffaaee99;
 }
-.token.string {
-  color: #AAFFEE;
+.token.string,
+.token.attr-value {
+  color: #aaffee;
 }
 .token.punctuation {
-  color: #AAA;
+  color: #aaa;
 }
 
 @media (prefers-color-scheme: dark) {

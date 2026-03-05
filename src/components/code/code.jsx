@@ -1,17 +1,28 @@
 import React from "react";
 import { Refractor, registerLanguage } from "react-refractor";
-import js from 'refractor/javascript'
-// import js from "refractor/lang/javascript.js";
-//
+import js from "refractor/javascript";
+import ts from "refractor/typescript";
+import css from "refractor/css";
+import markup from "refractor/markup";
+
 registerLanguage(js);
+registerLanguage(ts);
+registerLanguage(css);
+registerLanguage(markup);
 
 import styles from "./code.module.scss";
 
+const languageMap = {
+  html: "markup",
+};
+
 export function code(props) {
+  const lang =
+    languageMap[props.value.language] ?? props.value.language ?? "javascript";
   return (
     <Refractor
       className={styles.container}
-      language="js"
+      language={lang}
       value={props.value.code}
     />
   );

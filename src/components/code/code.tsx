@@ -12,13 +12,13 @@ registerLanguage(markup);
 
 import styles from "./code.module.scss";
 
-const languageMap = {
+const languageMap: Record<string, string> = {
   html: "markup",
 };
 
-export function code(props) {
+export function code(props: { value: { code: string; language?: string } }) {
   const lang =
-    languageMap[props.value.language] ?? props.value.language ?? "javascript";
+    languageMap[props.value.language ?? ""] ?? props.value.language ?? "javascript";
   return (
     <Refractor
       className={styles.container}

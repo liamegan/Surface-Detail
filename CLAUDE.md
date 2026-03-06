@@ -12,8 +12,8 @@ Author: Liam Egan
 
 | Layer | Tech |
 |---|---|
-| Framework | Next.js 15 (App Router, Turbopack) |
-| CMS | Sanity v3 (with Sanity Studio at `/studio`) |
+| Framework | Next.js 16 (App Router, Turbopack) |
+| CMS | Sanity v5 (with Sanity Studio at `/studio`) |
 | Styling | SCSS (global) + CSS Modules (component-level) |
 | Font | Rubik (Google Fonts via `next/font`) |
 | Analytics | Vercel Analytics |
@@ -79,9 +79,11 @@ The layout scrolls horizontally. `WheelContextProvider` intercepts `wheel` event
 
 ### Draft Mode / Sanity Visual Editing
 - Draft mode enabled via `/api/draft-mode/enable`
+- `VisualEditing` imported from `next-sanity/visual-editing` (not `next-sanity`)
 - `VisualEditing` shown when draft mode active (root layout)
 - `DisableDraftMode` button shown in sidebar when draft mode active
 - `SanityLive` added to root layout for live content updates
+- `defineLive` imported from `next-sanity/live` (not `next-sanity`)
 
 ### RSS Feed
 `/api/rss` — generates XML feed from all posts. Body stripped to plain text (first 300 chars). Cached 1 hour (`Cache-Control: public, max-age=3600`).
@@ -98,6 +100,7 @@ The layout scrolls horizontally. `WheelContextProvider` intercepts `wheel` event
 - CSS: global SCSS for typography/layout, CSS Modules (`.module.scss`) for component-specific styles
 - Class utilities: `classnames()` util at `@/utils/classnames`
 - GROQ queries defined inline with `groq` template tag; use `sanityFetch` (not raw `client`) for live data
+- Use generated Sanity types from `src/sanity/types.ts` — do NOT hand-roll `Post`/`QueryResult` interfaces
 - Sanity types auto-generated at `src/sanity/types.ts` — run `npm run typegen` after schema changes
 - Path alias: `@/` → `src/`
 - No test framework configured

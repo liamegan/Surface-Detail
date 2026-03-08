@@ -61,9 +61,7 @@ export async function Sidebar() {
         <h1 className={"logo"}>Surface Detail</h1>
       </div>
       <p>
-        A small online home for my thoughts, projects, ideas and experiments. I
-        don&apos;t expect anyone will read this, but it&apos;s not for you
-        anyway.
+        A small online home for my thoughts, projects, ideas and experiments.
       </p>
 
       <nav className={"nav"}>
@@ -79,6 +77,11 @@ export async function Sidebar() {
           <li>
             <a target="_blank" href="https://codepen.io/shubniggurath">
               CodePen
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://x.com/liamegan">
+              X
             </a>
           </li>
           <li>

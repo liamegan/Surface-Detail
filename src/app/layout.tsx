@@ -5,7 +5,6 @@ import { Analytics } from "@vercel/analytics/next";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 
-import { SanityLive } from "@/sanity/lib/live";
 
 import { classnames } from "@/utils/classnames";
 
@@ -23,7 +22,6 @@ export default async function RootLayout({
     <html className={classnames(fonts.map((f) => f.className))} lang="en">
       <body>
         {children}
-        <SanityLive />
         {(await draftMode()).isEnabled && <VisualEditing />}
         <Analytics />
       </body>

@@ -22,6 +22,13 @@ export const codepenType = defineType({
       type: "text",
       title: "Description",
     }),
+    defineField({
+      name: "scale",
+      type: "number",
+      title: "Scale",
+      description: "Zoom level for the embed (e.g. 0.5 shows the pen at half size). Defaults to 1.",
+      validation: (Rule) => Rule.min(0.1).max(1),
+    }),
   ],
   preview: {
     select: {

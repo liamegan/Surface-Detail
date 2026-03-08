@@ -4,8 +4,9 @@ import { baselinefactor } from "../../utils/consts";
 export const codepen = ({
   value,
 }: {
-  value: { title: string; url: string };
+  value: { title: string; url: string; scale?: number };
 }) => {
+  const scale = value.scale ?? 1;
   const embedURL = (() => {
     const url = new URL(value.url);
     url.pathname = url.pathname.replace(/\/(pen|embed)\//, "/embed/");
@@ -19,6 +20,7 @@ export const codepen = ({
       style={
         {
           ["--height" as string]: `${Math.floor(400 / baselinefactor) * baselinefactor}px`,
+          ["--scale" as string]: scale,
         } as React.CSSProperties
       }
     >

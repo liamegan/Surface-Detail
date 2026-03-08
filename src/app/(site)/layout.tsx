@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { SanityLive } from "@/sanity/lib/live";
 import { WheelContextProvider } from "@/components/MouseContextProvider";
 import { ClientLayout } from "@/components/ClientLayout";
 
@@ -34,6 +35,7 @@ export default function RootLayout({
           <div className={"main"}>{children}</div>
         </div>
       </ClientLayout>
+      <SanityLive />
     </WheelContextProvider>
   );
 }

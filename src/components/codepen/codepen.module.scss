@@ -1,12 +1,15 @@
 .iframe {
-  width: 100%;
-  height: var(--height, 400px);
+  width: calc(100% / var(--scale, 1));
+  height: calc(var(--height, 400px) / var(--scale, 1));
   border: none;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  transform: scale(var(--scale, 1));
+  transform-origin: top left;
 }
 .codepen {
   height: calc(var(--height, 400px) + var(--baseline));
+  overflow: hidden;
   .iframe {
     margin: 0;
   }

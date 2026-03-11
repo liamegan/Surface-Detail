@@ -51,3 +51,4 @@ The RSS feed includes:
 - Automatic updates when new content is published
 
 You can subscribe to the RSS feed using any RSS reader by adding the feed URL to your reader.
+.

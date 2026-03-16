@@ -29,6 +29,12 @@ export const codepenType = defineType({
       description: "Zoom level for the embed (e.g. 0.5 shows the pen at half size). Defaults to 1.",
       validation: (Rule) => Rule.min(0.1).max(1),
     }),
+    defineField({
+      name: "startPaused",
+      type: "boolean",
+      title: "Start paused",
+      description: "When enabled, the pen loads in preview mode and only runs when the user clicks play.",
+    }),
   ],
   preview: {
     select: {

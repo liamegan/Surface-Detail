@@ -135,6 +135,13 @@
             "type": "number"
           },
           "optional": true
+        },
+        "startPaused": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
         }
       }
     }

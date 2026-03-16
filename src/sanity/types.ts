@@ -40,6 +40,7 @@ export type Codepen = {
   url?: string;
   description?: string;
   scale?: number;
+  startPaused?: boolean;
 };
 
 export type Category = {
@@ -407,6 +408,7 @@ export type PostQueryResult = {
         url?: string;
         description?: string;
         scale?: number;
+        startPaused?: boolean;
         markDefs: null;
       }
     | {

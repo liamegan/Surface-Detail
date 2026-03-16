@@ -4,12 +4,13 @@ import { baselinefactor } from "../../utils/consts";
 export const codepen = ({
   value,
 }: {
-  value: { title: string; url: string; scale?: number };
+  value: { title: string; url: string; scale?: number; startPaused?: boolean };
 }) => {
   const scale = value.scale ?? 1;
   const embedURL = (() => {
     const url = new URL(value.url);
-    url.pathname = url.pathname.replace(/\/(pen|embed)\//, "/embed/");
+    const embedPath = value.startPaused ? "/embed/preview/" : "/embed/";
+    url.pathname = url.pathname.replace(/\/(pen|embed(?:\/preview)?)\//, embedPath);
     url.searchParams.set("default-tab", "result");
     return url.toString();
   })();
